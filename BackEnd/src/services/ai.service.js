@@ -73,4 +73,4 @@ async function generateContent(prompt) {
 
 }
 
-module.exports = generateContent
+module.exports = generateContent
