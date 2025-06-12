@@ -3,30 +3,37 @@ import "prismjs/themes/prism-tomorrow.css"
 import Editor from "react-simple-code-editor"
 import prism from "prismjs"
 import Markdown from "react-markdown"
-import rehypeHighlight from "rehype-highlight";
-import "highlight.js/styles/github-dark.css";
+import rehypeHighlight from "rehype-highlight"
+import "highlight.js/styles/github-dark.css"
 import axios from 'axios'
+import toast, { Toaster } from 'react-hot-toast'
 import './App.css'
 
 function App() {
-  const [ count, setCount ] = useState(0)
-  const [ code, setCode ] = useState(` function sum() {
+  const [code, setCode] = useState(` function sum() {
   return 1 + 1
 }`)
-
-  const [ review, setReview ] = useState(``)
+  const [review, setReview] = useState(``)
 
   useEffect(() => {
     prism.highlightAll()
   }, [])
 
   async function reviewCode() {
-    const response = await axios.post('http://localhost:3000/ai/get-review', { code })
-    setReview(response.data)
+    const loadingToast = toast.loading("Reviewing your code...")
+
+    try {
+      const response = await axios.post('http://localhost:3000/ai/get-review', { code })
+      setReview(response.data)
+      toast.success("Review completed!", { id: loadingToast })
+    } catch (error) {
+      toast.error("Failed to review code!", { id: loadingToast })
+    }
   }
 
   return (
     <>
+      <Toaster position='top-right' /> 
       <main>
         <div className="left">
           <div className="code">
@@ -45,22 +52,16 @@ function App() {
               }}
             />
           </div>
-          <div
-            onClick={reviewCode}
-            className="review">Review</div>
+          <div onClick={reviewCode} className="review">Review</div>
         </div>
         <div className="right">
-          <Markdown
-
-            rehypePlugins={[ rehypeHighlight ]}
-
-          >{review}</Markdown>
+          <Markdown rehypePlugins={[rehypeHighlight]}>
+            {review}
+          </Markdown>
         </div>
       </main>
     </>
   )
 }
 
-
-
-export default App
+export default App
