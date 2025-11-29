@@ -217,20 +217,8 @@ function App() {
   return 1 + 1
 }`);
   
-  const [review, setReview] = useState(`## 🔴 Why the Code Failed
-The code executes successfully but is rigid. It only calculates 1 + 1.
-
-## ⚡ Quick Optimization Hint
-Pass arguments to the function to make it reusable for any numbers.
-
-## 🐛 Detailed Bug Report
-* **Issue #1 (Line 1-3)** — Inflexible function signature
-* **Exact Fix:**
-\`\`\`javascript
-function sum(a, b) {
-  return a + b;
-}
-\`\`\`
+  const [review, setReview] = useState(`🟢THIS THE REVIEW PLACEHOLDER.
+    THIS TEXT WILL BE REPLACED WHEN THE CODE IS EXECUTED WITH A RUNNING BACKEND
 `);
 
   const [isLoading, setIsLoading] = useState(false);
