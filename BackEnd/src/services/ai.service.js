@@ -50,7 +50,7 @@ const systemInstruction = `
           "**Why it fails / Root Cause:** {Deep technical explanation tied to memory/DSA/logic}",
           "**Impact:** {Crash, Data Loss, Latency, Security Risk}",
           "**Severity:** {Low | Medium | High}",
-          "**Exact Fix:** \n```{language}\n{Minimal corrected code snippet}\n```",
+          "**Exact Fix:** \n\`\`\`{language}\n{Minimal corrected code snippet}\n\`\`\`",
           "**Verification:** {Short test case or command}"
         ]
       }
