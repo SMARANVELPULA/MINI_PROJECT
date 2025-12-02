@@ -217,7 +217,7 @@ function App() {
   return 1 + 1
 }`);
   
-  const [review, setReview] = useState(`🟢THIS THE REVIEW PLACEHOLDER.
+  const [review, setReview] = useState(`🟢THIS IS THE REVIEW PLACEHOLDER.
     THIS TEXT WILL BE REPLACED WHEN THE CODE IS EXECUTED WITH A RUNNING BACKEND
 `);
 
